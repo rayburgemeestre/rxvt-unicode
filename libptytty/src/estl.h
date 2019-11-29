@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <type_traits>
 
 #include "ecb.h"
 
@@ -67,7 +68,7 @@ private:
   {
     #if __cplusplus >= 201103L
       return std::is_trivially_assignable<T, T>::value
-          && std::is_trivially_constructable<T>::value
+          && std::is_trivially_constructible<T>::value
           && std::is_trivially_copyable<T>::value
           && std::is_trivially_destructible<T>::value;
     #elif ECB_GCC_VERSION(4,4)

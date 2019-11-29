@@ -145,7 +145,7 @@ depend:
 	makedepend -f Makefile.in -I. -I.. -I../libptytty/src -I../libev -Y *.C *.xs >/dev/null 2>&1
 
 # makedepend has trouble finding these
-ev_cpp.o: ../libev/ev.c ../libev/ev_epoll.c ../libev/ev_kqueue.c ../libev/ev_linuxaio.c
+ev_cpp.o: ../libev/ev.c ../libev/ev_epoll.c ../libev/ev_kqueue.c # ../libev/ev_linuxaio.c
 ev_cpp.o: ../libev/ev_poll.c ../libev/ev_port.c ../libev/ev_select.c ../libev/ev_win32.c
 
 
