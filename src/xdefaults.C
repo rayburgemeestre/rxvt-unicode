@@ -231,6 +231,7 @@ optList[] = {
               STRG (Rs_ext_bwidth, NULL, "bw", NULL, NULL),
               STRG (Rs_ext_bwidth, NULL, "borderwidth", NULL, NULL),
               STRG (Rs_int_bwidth, "internalBorder", "b", "number", "internal border in pixels"),
+              STRG (Rs_int_bwidth_tb, "internalBorderTopBottom", "b", "number", "internal border of top and bottom only in pixels"),
               BOOL (Rs_borderLess, "borderLess", "bl", Opt_borderLess, 0, "borderless window"),
               STRG (Rs_lineSpace, "lineSpace", "lsp", "number", "number of extra pixels between rows"),
               STRG (Rs_letterSpace, "letterSpace", "letsp", "number", "letter spacing adjustment"),

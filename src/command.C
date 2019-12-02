@@ -1624,7 +1624,7 @@ rxvt_term::x_cb (XEvent &ev)
                                       ev.xbutton.state & Button3Mask ? 2 : 0);
 
 #ifdef SELECTION_SCROLLING
-                    if (ev.xbutton.y < int_bwidth
+                    if (ev.xbutton.y < int_bwidth_tb
                         || Pixel2Row (ev.xbutton.y) > (nrow-1))
                       {
                         page_dirn scroll_selection_dir;
@@ -1644,15 +1644,15 @@ rxvt_term::x_cb (XEvent &ev)
                         selection_save_state = (ev.xbutton.state & Button3Mask) ? 2 : 0;
 
                         /* calc number of lines to scroll */
-                        if (ev.xbutton.y < int_bwidth)
+                        if (ev.xbutton.y < int_bwidth_tb)
                           {
                             scroll_selection_dir = UP;
-                            dist = int_bwidth - ev.xbutton.y;
+                            dist = int_bwidth_tb - ev.xbutton.y;
                           }
                         else
                           {
                             scroll_selection_dir = DN;
-                            dist = ev.xbutton.y - (int_bwidth + vt_height);
+                            dist = ev.xbutton.y - (int_bwidth_tb + vt_height);
                           }
 
                         scroll_selection_lines = Pixel2Height (dist)
@@ -3536,8 +3536,24 @@ rxvt_term::process_xterm_seq (int op, char *str, char resp)
       case URxvt_Color_border:
         process_color_seq (op, Color_border, str, resp);
         break;
+      case URxvt_Margin_border:
+      {
+        int_bwidth_tb = 50;
+        if (*str == '+') {
+          int_bwidth += atoi(str);
+        }
+        else if (*str == '-') {
+          int_bwidth -= atoi(str + 1);
+        }
+        else {
+          int_bwidth = atoi(str);
+        }
+        *str = '\0';
+        resize_all_windows (0, 0, 0);
+        break;
+      }
 
-      case XTerm_logfile:
+    case XTerm_logfile:
         // TODO, when secure mode?
         break;
 

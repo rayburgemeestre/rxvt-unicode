@@ -578,6 +578,7 @@ rxvt_term::init_vars ()
   ncol = 80;
   nrow = 24;
   int_bwidth = INTERNALBORDERWIDTH;
+  int_bwidth_tb = INTERNALBORDERWIDTH;
   ext_bwidth = EXTERNALBORDERWIDTH;
   lineSpace = LINESPACE;
   letterSpace = LETTERSPACE;
@@ -690,6 +691,11 @@ rxvt_term::init_resources (int argc, const char *const *argv)
 #if ENABLE_FRILLS
   if (rs[Rs_int_bwidth] && (i = atoi (rs[Rs_int_bwidth])) >= 0)
     int_bwidth = min (i, std::numeric_limits<int16_t>::max ());
+
+  if (rs[Rs_int_bwidth_tb] && (i = atoi (rs[Rs_int_bwidth_tb])) >= 0)
+    int_bwidth_tb = min (i, std::numeric_limits<int16_t>::max ());
+  else
+    int_bwidth_tb = int_bwidth;
 
   if (rs[Rs_ext_bwidth] && (i = atoi (rs[Rs_ext_bwidth])) >= 0)
     ext_bwidth = min (i, std::numeric_limits<int16_t>::max ());

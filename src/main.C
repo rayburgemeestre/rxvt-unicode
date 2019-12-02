@@ -717,9 +717,11 @@ rxvt_term::window_calc (unsigned int newwidth, unsigned int newheight)
   max_width = MAX_COLS * fwidth;
   max_height = MAX_ROWS * fheight;
 
-  szHint.base_width = szHint.base_height = 2 * int_bwidth;
+  szHint.base_width = 2 * int_bwidth;
+  szHint.base_height = 2 * int_bwidth_tb;
 
-  window_vt_x = window_vt_y = int_bwidth;
+  window_vt_x = int_bwidth;
+  window_vt_y = int_bwidth_tb;
 
   if (scrollBar.state)
     {
@@ -1207,9 +1209,9 @@ rxvt_term::im_set_size (XRectangle &size)
 {
   // the int_bwidth terms make no sense to me
   size.x      = int_bwidth;
-  size.y      = int_bwidth;
+  size.y      = int_bwidth_tb;
   size.width  = Width2Pixel (ncol) + int_bwidth;
-  size.height = Height2Pixel (nrow) + int_bwidth;
+  size.height = Height2Pixel (nrow) + int_bwidth_tb;
 }
 
 void

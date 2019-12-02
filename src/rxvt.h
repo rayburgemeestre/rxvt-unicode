@@ -434,6 +434,7 @@ enum {
   URxvt_Color_BD         = 706,     // change actual 'Bold' color
   URxvt_Color_UL         = 707,     // change actual 'Underline' color
   URxvt_Color_border     = 708,
+  URxvt_Margin_border    = 709,
 
   URxvt_font             = 710,
   URxvt_boldFont         = 711,
@@ -895,6 +896,7 @@ struct TermWin_t
   int            focus;         /* window has focus                         */
   int            mapped;        /* window state mapped?                     */
   int            int_bwidth;    /* internal border width                    */
+  int            int_bwidth_tb; /* internal border width top+bottom         */
   int            ext_bwidth;    /* external border width                    */
   int            lineSpace;     /* number of extra pixels between rows      */
   int            letterSpace;   /* number of extra pixels between columns   */

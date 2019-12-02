@@ -67,6 +67,7 @@
   def (hold)
   def (ext_bwidth)
   def (int_bwidth)
+  def (int_bwidth_tb)
   def (borderLess)
   def (lineSpace)
   def (letterSpace)
