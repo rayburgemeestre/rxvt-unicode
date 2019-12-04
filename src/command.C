@@ -3538,17 +3538,27 @@ rxvt_term::process_xterm_seq (int op, char *str, char resp)
         break;
       case URxvt_Margin_border:
       {
-        int_bwidth_tb = 50;
-        if (*str == '+') {
-          int_bwidth += atoi(str);
-        }
-        else if (*str == '-') {
-          int_bwidth -= atoi(str + 1);
-        }
-        else {
-          int_bwidth = atoi(str);
-        }
+        const auto update = [&](auto& int_bwidth, const auto& str){
+          if (*str == '+')
+            int_bwidth += atoi(str);
+          else if (*str == '-')
+            int_bwidth -= atoi(str + 1);
+          else
+            int_bwidth = atoi(str);
+        };
+        // Format of str is: "<left_right_margin>" | "<left_right_margin> <top_bottom_margin>".
+        // Margin is a number, and can be prefixed with "-" or "+" to make it relative as,
+        //  opposed to absolute.
+        // Some examples: "+123", "+123 -10", "500 10".
+        char *token = strtok(str, " ");
+        if (token != NULL)
+          update(int_bwidth, token);
+        token = strtok(NULL, " ");
+        if (token != NULL)
+          update(int_bwidth_tb, token);
+        // Make sure the margin text isn't really going to be interpreted as a color
         *str = '\0';
+        // Force redraw
         resize_all_windows (0, 0, 0);
         break;
       }
